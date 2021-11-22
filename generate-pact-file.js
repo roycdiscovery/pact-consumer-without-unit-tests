@@ -66,20 +66,19 @@ const buildRequest = interaction => {
 
   const promises = fs
     .readdirSync(interactionsFolder)
+    .filter(file => file.match(/.js$/))
     .map(async interactionFile => {
       const interaction = require(`${interactionsFolder}/${interactionFile}`)
 
-      await provider.removeInteractions()
-      provider.addInteraction(interaction)
+      await provider.addInteraction(interaction)
 
       const { path, method, headers, query, body } = buildRequest(interaction)
       const url = mockProviderUrl + path + query
       await fetch(url, { headers, method, body })
-
-      await provider.verify()
     })
 
   await Promise.all(promises)
 
+  await provider.verify()
   await provider.finalize()
 })()
