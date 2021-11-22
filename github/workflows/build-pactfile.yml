@@ -1,0 +1,20 @@
+name: "pactflow"
+
+on: [push]
+
+env:
+  application_name: "sonic-api-ng"
+
+jobs:
+  build-pactfile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker build -t generate-pactfile .
+      - run: docker run \
+          -e PACT_CONSUMER_NAME="my_consumer" \
+          -e PACT_PROVIDER_NAME="my_provider" \
+          -v $(pwd)/pactfiles:/pactfiles \
+          -v $(pwd)/interactions:/interactions \
+          --rm \
+          generate-pactfile
