@@ -6,6 +6,12 @@ The first option is to simply create the pact files manually, following the sche
 
 A nicer approach is to create pact 'interaction' files and let PACT generate the pactfile for you, which is what this repo is delivering.
 
+_The 'normal' approach for creating pactfiles:_
+![Alt text](docs/generate-pactfile-normally.png?raw=true "Normal approach")
+
+_This approach for creating pactfiles:_
+![Alt text](docs/generate-pactfile-notests.png?raw=true "Normal approach")
+
 This is intended as a 'starting point' to get you up and running - feel free to adapt this to suit your needs when you implement it.
 
 The process is the same as decsribed [here](https://discoveryinc.atlassian.net/wiki/spaces/GQA/pages/2886369708/Implementing+in+Consumer+code), but instead of the "[...test consumer application](https://discoveryinc.atlassian.net/wiki/spaces/GQA/pages/2886369708/Implementing+in+Consumer+code#2.-Start-mock-provider-and-test-consumer-application)" step, follow these steps:
